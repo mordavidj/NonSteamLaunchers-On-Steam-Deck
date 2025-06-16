@@ -443,7 +443,7 @@ def get_steam_store_appid(steam_store_game_name):
 
     print(f"No App ID found for {steam_store_game_name} in cached Steam AppList.")
     return None
-    
+
 
 def create_steam_store_app_manifest_file(steam_store_appid, steam_store_game_name):
     steamapps_dir = f"{logged_in_home}/.steam/root/steamapps/"
@@ -513,11 +513,11 @@ def tag_artwork_files(shortcut_id, game_name, steamid3, logged_in_home):
     base_name = str(shortcut_id)
 
     patterns = [
-        f"{base_name}-icon",        
+        f"{base_name}-icon",
         f"{base_name}_logo",
         f"{base_name}_hero",
-        f"{base_name}p",            
-        f"{base_name}"               
+        f"{base_name}p",
+        f"{base_name}"
     ]
 
     found_files = []
@@ -777,7 +777,7 @@ def create_new_entry(shortcutdirectory, appname, launchoptions, startingdir):
 
     # **Intercept and modify the shortcut based on UMU data**
     exe_path, startingdir, launchoptions = modify_shortcut_for_umu(appname, exe_path, launchoptions, startingdir)
-    
+
 
     # Only store the app ID for specific launchers
     if appname in ['Epic Games', 'Gog Galaxy', 'Ubisoft Connect', 'Battle.net', 'EA App', 'Amazon Games', 'itch.io', 'Legacy Games', 'Humble Bundle', 'IndieGala Client', 'Rockstar Games Launcher', 'Glyph', 'Minecraft Launcher' 'Playstation Plus', 'VK Play', 'HoYoPlay', 'Nexon Launcher', 'Game Jolt Client', 'Artix Game Launcher', 'ARC Launcher', 'PURPLE Launcher', 'Plarium Play', 'VFUN Launcher', 'Tempo Launcher', 'Pokémon Trading Card Game Live', 'Antstream Arcade', 'STOVE Client']:
@@ -1634,9 +1634,10 @@ def parse_battlenet_config(config_file_path):
     print(f"Opening Battle.net config file at: {config_file_path}")
     with open(config_file_path, 'r') as file:
         config_data = json.load(file)
-
+    print(f"config_data: {config_data}")
     games_info = config_data.get("Games", {})
     game_dict = {}
+    print(f"Games_info: {games_info}")
 
     for game_key, game_data in games_info.items():
         print(f"Processing game: {game_key}")
@@ -1822,7 +1823,7 @@ else:
             # Check if candidates exist and are not empty
             if candidates:
                 executable_path = candidates[0].get('path', None)
-                
+
                 # If there's no valid executable path, skip this entry
                 if not executable_path:
                     print(f"Skipping game (no executable found): {game_info[2]}")
@@ -1854,7 +1855,7 @@ else:
 
     # Close the database connection
     conn.close()
-    
+
 # End of Itch.io Scanner
 
 
@@ -2391,7 +2392,7 @@ else:
 
             if not name:
                 continue
-                
+
             # GeForce NOW
             if "play.geforcenow.com/games" in url:
                 if name == "GeForce NOW":
